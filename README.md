@@ -1,2 +1,9 @@
-# storekeeper
-Util to keep disk storage optimised
+Storekeeper
+===========
+
+Util to keep disk storage optimised. 
+
+Funtionality:
+-------------
+
+* Find duplicates
