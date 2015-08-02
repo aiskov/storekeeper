@@ -2,7 +2,7 @@ import os
 from hashlib import sha224
 
 
-def search_duplicates(target):
+def search_duplicates(target, options=None):
     digests = dict()
 
     for root, dirs, files in os.walk(target):
@@ -14,6 +14,11 @@ def search_duplicates(target):
                 digests[hash_digest] = set()
 
             digests[hash_digest].add(path)
+
+            if 'verbose' in options and options.verbose and len(digests[hash_digest]) > 1:
+                print 'Duplicates found by hash: %s' % hash_digest
+                for file_path in digests[hash_digest]:
+                    print '    %s' % file_path
 
     return [value for key, value in digests.iteritems() if len(value) > 1]
 
